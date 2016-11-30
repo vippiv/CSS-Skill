@@ -1,8 +1,13 @@
-<<<<<<< HEAD
-// FE-shopping.js
-需要友情提示的是，你看到的一大串类似3628164...882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，而且你看到的commit id和我的肯定不一样，以你自己的为准。为什么commit id需要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。
-
-每提交一个新版本，实际上Git就会把它们自动串成一条时间线。如果使用可视化工具查看Git历史，就可以更清楚地看到提交历史的时间线：
-=======
-// FE-shopping.js
->>>>>>> 744f524980debfc645847f9cc99c4a11377727cc
+window.onload = function(){
+	var obj = {};
+	var ret = document.querySelector("#ret");
+	var tb = document.getElementsByTagName('table')[0];
+	var tr = tb.getElementsByTagName('tr');
+	for( var i = 0 , len = tr.length ; i < len ; i++ ){
+		var td = tr[i].getElementsByTagName('td');
+		obj[td[0].innerText] = { type : td[1].innerText , description : td[2].innerText }
+		// console.log( td[0].innerText +";"+ td[1].innerText +";"+ td[2].innerText);
+	}
+	var str = JSON.stringify( obj ).replace(/\{/g,"{<br>").replace(/\}/g,"<br>}").replace(/\",\"/g,"\",<br>\"").replace(/\},/g,"},<br>");
+	ret.innerHTML = str;
+}
